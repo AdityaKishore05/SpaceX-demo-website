@@ -30,7 +30,7 @@ const App = () => {
         {/* Background image */}
         <img
           className="object-cover w-full h-full"
-          src="/ff.png"
+          src="https://i.postimg.cc/JnTtZMhP/ff.jpg"
           alt="Background"
         />
         {/* Darkening overlay */}
