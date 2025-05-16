@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    @apply bg-transparent text-white font-sans relative overflow-hidden h-screen w-screen m-0 p-0;
+  }
+  
+  * {
+    @apply box-border;
+  }
+  
+  #root {
+    @apply h-full w-full;
+  }
+}
