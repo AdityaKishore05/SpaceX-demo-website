@@ -78,7 +78,7 @@ const Header = () => {
         ))}
       </nav>
 
-      <button onClick={() => toggleAuthPopup(false)} className="hidden md:block bg-[#b7b7b7] text-black py-2 px-5 rounded-full font-medium transition hover:bg-white z-50">
+      <button onClick={() => toggleAuthPopup(false)} className="hidden md:block bg-[#b7b7b7] text-black py-2 px-5 rounded-full font-medium transition hover:bg-white z-50 cursor-pointer">
         SIGN IN
       </button>
 
@@ -88,7 +88,7 @@ const Header = () => {
       >
         <nav className="flex flex-col justify-center gap-10 items-center p-10">
           {/* mobile auth buttons */}
-          <button onClick={() => toggleAuthPopup(false)} className="w-40 rounded-md border border-white py-2 text-white hover:bg-white hover:text-black transition">Sign in</button>
+          <button onClick={() => toggleAuthPopup(false)} className="w-40 rounded-md border border-white py-2 text-white hover:bg-white hover:text-black transition cursor-pointer">Sign in</button>
           {["FALCON 9", "FALCON HEAVY", "DRAGON", "STARSHIP", "HUMAN SPACEFLIGHT"].map(t => (
             <a key={t} href="#" className="text-xl tracking-wider relative after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">
               {t}
@@ -102,10 +102,10 @@ const Header = () => {
           <div className="absolute inset-0 bg-transparent bg-opacity-70 backdrop-blur" onClick={() => setIsAuthOpen(false)}></div>
 
           <div className="bg-transparent bg-opacity-70 backdrop-blur rounded-lg w-full max-w-md mx-4 p-6 pb-10 z-10 relative shadow-[0_0_5px_3px_white]">
-            <button onClick={() => setIsAuthOpen(false)} className="absolute top-4 right-4 text-white border-2 rounded-lg p-1.5 border-white hover:bg-white hover:text-black transition"><X size={20} /></button>
+            <button onClick={() => setIsAuthOpen(false)} className="absolute top-4 right-4 text-white border-2 rounded-lg p-1.5 border-white hover:bg-white hover:text-black transition cursor-pointer"><X size={20} /></button>
 
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white">{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
+              <h2 className="text-2xl font-bold text-white ">{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
             </div>
 
             <div className="space-y-4">
@@ -135,15 +135,15 @@ const Header = () => {
                     <input id="remember-me" type="checkbox" className="h-4 w-4" />
                     <label htmlFor="remember-me" className="ml-2 text-sm text-white">Remember me</label>
                   </div>
-                  <button className="text-sm font-medium text-white hover:underline">Forgot password?</button>
+                  <button className="text-sm font-medium text-white hover:underline cursor-pointer">Forgot password?</button>
                 </div>
               )}
-              <button onClick={handleAuth} className="w-full py-2 px-4 border rounded-md text-sm font-medium text-white border-white hover:bg-white hover:text-black transition">{isSignUp ? 'Sign up' : 'Sign in'}</button>
+              <button onClick={handleAuth} className="w-full py-2 px-4 border rounded-md text-sm font-medium text-white border-white hover:bg-white hover:text-black transition cursor-pointer">{isSignUp ? 'Sign up' : 'Sign in'}</button>
             </div>
 
             <p className="mt-6 text-center text-sm text-white">
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
-              <button onClick={() => setIsSignUp(!isSignUp)} className="font-medium underline hover:text-gray-300">
+              <button onClick={() => setIsSignUp(!isSignUp)} className="font-medium underline hover:text-gray-300 cursor-pointer">
                 {isSignUp ? 'Sign in' : 'Sign up'}
               </button>
             </p>
