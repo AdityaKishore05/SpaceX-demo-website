@@ -24,9 +24,7 @@ const Hero = () => {
       <div className="container mx-auto px-5 flex flex-col lg:flex-row items-center justify-between md:py-20">
         {/* Text Content */}
         <div 
-          className="z-10 w-full lg:w-1/2 pt-10 lg:pt-0"
-        
-        >
+          className="z-10 w-full lg:w-1/2 pt-10 lg:pt-0">
           <div className="flex flex-col items-center lg:items-start max-w-md mx-auto lg:mx-0">
             {/* Badge */}
             <div className="flex items-center justify-center gap-2 px-4 py-2 mb-16 md:mb-8 rounded-full bg-indigo-500/10 backdrop-blur-sm border border-indigo-500/20">
@@ -61,8 +59,6 @@ const Hero = () => {
                 href="#"
               >
                 JOIN US <FaRegHeart className="w-4 h-4"/>
-
-
               </a>
             </div>
           </div>
@@ -70,8 +66,7 @@ const Hero = () => {
 
         {/* 3D Model Container */}
         <div className="w-full lg:w-1/2 h-96 md:h-[500px] lg:h-full relative mt-12 lg:mt-0">
-         
-          
+             
           {/* Spline 3D object */}
           {windowWidth > 768 && (
             <div>
@@ -80,8 +75,7 @@ const Hero = () => {
                 scene="https://prod.spline.design/jeVzQSaHENWb6HmG/scene.splinecode"
               />
             </div>
-          )}
-          
+)}
           {/* Gradient overlay for mobile */}
           <div className="absolute bottom-0 left-0 right-0 h-24 lg:hidden"></div>
         </div>

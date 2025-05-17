@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const App = () => {
   useEffect(() => {
-    // Initialize AOS animation library
-    AOS.init({
-      duration: 1500,
-      once: true,
-    });
     
     // Disable scrolling on the entire document
     document.body.style.overflow = 'hidden';
