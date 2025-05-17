@@ -24,12 +24,12 @@ const Hero = () => {
       <div className="container mx-auto px-5 flex flex-col lg:flex-row items-center justify-between md:py-20">
         {/* Text Content */}
         <div 
-          className="z-10 w-full lg:w-1/2 pt-12 lg:pt-0"
+          className="z-10 w-full lg:w-1/2 pt-10 lg:pt-0"
         
         >
           <div className="flex flex-col items-center lg:items-start max-w-md mx-auto lg:mx-0">
             {/* Badge */}
-            <div className="flex items-center justify-center gap-2 px-4 py-2 mb-8 rounded-full bg-indigo-500/10 backdrop-blur-sm border border-indigo-500/20">
+            <div className="flex items-center justify-center gap-2 px-4 py-2 mb-16 md:mb-8 rounded-full bg-indigo-500/10 backdrop-blur-sm border border-indigo-500/20">
               <SiMailgun className="w-4 h-4 text-indigo-400" />
               <span className="text-sm font-medium text-indigo-300">NEW PLATFORM</span>
             </div>
@@ -39,7 +39,7 @@ const Hero = () => {
               <span className="block text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-2">
                 PLACE FOR
               </span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 ASTRONAUTS
               </span>
             </h1>
@@ -86,10 +86,7 @@ const Hero = () => {
           <div className="absolute bottom-0 left-0 right-0 h-24 lg:hidden"></div>
         </div>
       </div>
-      
-      {/* Background decorative elements */}
-      <div className="absolute top-1/4 left-0 w-64 h-64 bg-indigo-600/20 rounded-full filter blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-600/10 rounded-full filter blur-3xl"></div>
+  
     </main>
   );
 };

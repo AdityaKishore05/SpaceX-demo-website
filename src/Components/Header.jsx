@@ -3,7 +3,9 @@ import { IoIosMenu } from "react-icons/io";
 import { X, User, Lock } from 'lucide-react';
 
 const Header = () => {
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,25 +14,24 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const toggleSignInPopup = () => {
-    setIsSignInOpen(!isSignInOpen);
-    // Close mobile menu when opening sign-in popup
-    if (isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
-    }
+  const toggleAuthPopup = (signUp = false) => {
+    setIsSignUp(signUp);
+    setIsAuthOpen(true);
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
   };
 
-  const handleSignIn = () => {
-    alert(`Sign in attempt with email: ${email}`);
-    // In a real application, you would handle authentication here
-    setEmail('');
-    setPassword('');
-    setIsSignInOpen(false);
+  const handleAuth = () => {
+    const mode = isSignUp ? "Sign-up" : "Sign-in";
+    alert(`${mode} attempt with email: ${email}`);
+    setEmail("");
+    setPassword("");
+    setUsername("");
+    setIsAuthOpen(false);
   };
 
   return (
-    <header className="flex justify-between items-center md:p-6 p-6 select-none">
-      <svg version="1.1" x="0px" y="0px" viewBox="0 0 350 50" aria-hidden="false" className="w-32 md:w-40">
+    <header className="flex justify-between items-center md:p-6 p-5 md:pt-7 select-none">
+      <svg version="1.1" x="0px" y="0px" viewBox="0 0 350 50" aria-hidden="false" className="w-32 md:w-38">
         <title>SpaceX Logo</title>
         <g class="letter_s">
           <path class="fill-white" d="M37.5,30.5H10.9v-6.6h34.3c-0.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7,0-9,2.1-9,6.7v4.9c0,4,3.4,6.3,8.4,6.3h26.9v7H1.5
@@ -59,135 +60,79 @@ const Header = () => {
           <path class="fill-white" d="M399,0.7c-80,4.6-117,38.8-125.3,46.9l-1.7,1.6h14.8C326.8,9.1,384.3,2,399,0.7L399,0.7z"></path>
         </g>
       </svg>
-      
+
       <nav className="hidden md:flex items-center justify-center gap-12 px-5">
-      <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">FALCON 9</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-3 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">FALCON HEAVY</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">DRAGON</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">STARSHIP</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">HUMAN SPACEFLIGHT</a>
+        {["FALCON 9", "FALCON HEAVY", "DRAGON", "STARSHIP", "HUMAN SPACEFLIGHT"].map(t => (
+          <a key={t} href="#" className="text-xl tracking-wider relative after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">
+            {t}
+          </a>
+        ))}
       </nav>
-      
-      <button 
-        onClick={toggleSignInPopup}
-        className="hidden md:block bg-[#b7b7b7] text-black py-2 px-5 rounded-full border-none font-medium transition-all duration-500 hover:bg-white cursor-pointer z-50 md:mt-1"
-      >
+
+      <button onClick={() => toggleAuthPopup(false)} className="hidden md:block bg-[#b7b7b7] text-black py-2 px-5 rounded-full font-medium transition hover:bg-white z-50 cursor-pointer hover:shadow-[0_0_3px_2px_#ededed]">
         SIGN IN
       </button>
-      
-      <button 
-        onClick={toggleMobileMenu}  
-        className="md:hidden text-3xl p-2 z-50"
-      >
-        <IoIosMenu />
-      </button>
-      
-      <div 
-        className={`fixed top-16 bottom-0 left-0 right-0 bg-transparent bg-opacity-70 backdrop-blur-sm h-screen z-30 md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
-      >
+
+      <button onClick={toggleMobileMenu} className="md:hidden text-3xl p-2 z-50"><IoIosMenu /></button>
+
+      <div className={`fixed top-16 bottom-0 left-0 right-0 bg-transparent bg-opacity-70 backdrop-blur-sm h-screen z-30 md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <nav className="flex flex-col justify-center gap-12 items-center p-10">
-          <button
-            onClick={toggleSignInPopup}
-            className="py-2 px-8 border rounded-md shadow-sm text-xl font-medium text-white border-white hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
-          >
-            Sign in
-          </button>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">FALCON 9</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-3 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">FALCON HEAVY</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">DRAGON</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">STARSHIP</a>
-          <a href="#" className="text-xl tracking-wider transition-colors hover:text-grey-300 relative after:bg-white after:absolute after:h-0.5 after:w-4 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">HHUMAN SPACEFLIGHT</a>
+          {["FALCON 9", "FALCON HEAVY", "DRAGON", "STARSHIP", "HUMAN SPACEFLIGHT"].map(t => (
+            <a key={t} href="#" className="text-xl tracking-wider relative after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">{t}</a>
+          ))}
         </nav>
       </div>
 
-      {/* Sign In Popup */}
-      {isSignInOpen && (
+      {isAuthOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div 
-            className="absolute inset-0 bg-transparent bg-opacity-70 backdrop-blur"
-            onClick={toggleSignInPopup}
-          ></div>
-          
+          <div className="absolute inset-0 bg-transparent bg-opacity-70 backdrop-blur" onClick={() => setIsAuthOpen(false)}></div>
+
           <div className="bg-transparent bg-opacity-70 backdrop-blur rounded-lg w-full max-w-md mx-4 p-6 pb-10 z-10 relative shadow-[0_0_5px_3px_white]">
-            <button
-              onClick={toggleSignInPopup}
-              className="absolute top-4 right-4 text-white border-2 rounded-lg p-1.5 border-white cursor-pointer transition-all duration-300 hover:bg-white hover:text-black"
-            >
-              <X size={20} />
-            </button>
-            
-            <div className="text-center mb-6">
-              <h2 className="text-xl font-bold text-white">Sign In</h2>
-              <p className="text-white mt-1">Enter your credentials to access your account</p>
+            <button onClick={() => setIsAuthOpen(false)} className="absolute top-4 right-4 text-white border-2 rounded-lg p-1.5 border-white hover:border-transparent hover:bg-white hover:text-black transition hover:shadow-[0_0_3px_2px_#ededed] cursor-pointer"><X size={20} /></button>
+
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-white">{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
             </div>
-            
+
             <div className="space-y-4">
+              {isSignUp && (
+                <div className="space-y-2">
+                  <label htmlFor="username" className="block text-sm font-medium text-white">Username</label>
+                  <input id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} className="w-full px-4 py-2 border border-white rounded-md" placeholder="Your username" />
+                </div>
+              )}
               <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-medium text-white">
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm font-medium text-white">Email</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <User size={16} className="text-white" />
-                  </div>
-                  <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-white rounded-md"
-                    placeholder="your@email.com"
-                  />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><User size={16} className="text-white" /></div>
+                  <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="pl-10 w-full px-4 py-2 border border-white rounded-md" placeholder="you@email.com" />
                 </div>
               </div>
-              
               <div className="space-y-2">
-                <label htmlFor="password" className="block text-sm font-medium text-white">
-                  Password
-                </label>
+                <label htmlFor="password" className="block text-sm font-medium text-white">Password</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock size={16} className="text-white" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Lock size={16} className="text-white" /></div>
+                  <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} className="pl-10 w-full px-4 py-2 border border-white rounded-md" placeholder="••••••••" />
+                </div>
+              </div>
+              {!isSignUp && (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <input id="remember-me" type="checkbox" className="h-4 w-4" />
+                    <label htmlFor="remember-me" className="ml-2 text-sm text-white">Remember me</label>
                   </div>
-                  <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-white rounded-md"
-                    placeholder="••••••••"
-                  />
+                  <button className="text-sm font-medium text-white hover:underline cursor-pointer">Forgot password?</button>
                 </div>
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 text-white"
-                  />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-white">
-                    Remember me
-                  </label>
-                </div>
-                
-                <div className="text-sm">
-                  <button className="font-medium text-white cursor-pointer hover:underline">
-                    Forgot password?
-                  </button>
-                </div>
-              </div>
-              
-              <div>
-                <button
-                  onClick={handleSignIn}
-                  className="w-full py-2 px-4 border rounded-md shadow-sm text-sm font-medium text-white border-white hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
-                >
-                  Sign in
-                </button>
-              </div>
+              )}
+              <button onClick={handleAuth} className="w-full py-2 px-4 border rounded-md text-md font-medium text-white border-white hover:bg-white hover:text-black transition z-50 cursor-pointer">{isSignUp ? 'Sign up' : 'Sign in'}</button>
             </div>
+
+            <p className="mt-6 text-center text-sm text-white">
+              {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+              <button onClick={() => setIsSignUp(!isSignUp)} className="font-medium underline hover:text-gray-300 cursor-pointer">
+                {isSignUp ? 'Sign in' : 'Sign up'}
+              </button>
+            </p>
           </div>
         </div>
       )}

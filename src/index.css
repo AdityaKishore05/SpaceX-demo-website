@@ -2,7 +2,7 @@
 
 @layer base {
   html, body {
-    @apply bg-transparent text-white font-sans relative overflow-hidden h-screen w-screen m-0 p-0;
+    @apply text-white font-sans relative overflow-hidden h-screen w-screen m-0 p-0;
   }
   
   * {
