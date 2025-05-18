@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center md:p-6 p-6 select-none">
+    <header className="flex justify-between items-center md:p-6 p-5 md:pt-7 select-none">
       <div
         className="absolute top-[3%] left-0 right-0 h-10 md:h-14
         shadow-[0_0_20px_10px_rgba(255,255,255,0.7)] -z-10"
@@ -40,7 +40,7 @@ const Header = () => {
         shadow-[0_0_20px_10px_rgba(255,255,255,0.7)] -z-10"
       ></div>
 
-      <svg version="1.1" x="0px" y="0px" viewBox="0 0 350 50" aria-hidden="false" className="w-32 md:w-38">
+      <svg version="1.1" x="0px" y="0px" viewBox="0 0 350 60" aria-hidden="false" className="w-32 md:w-38">
         <title>SpaceX Logo</title>
         <g class="letter_s">
           <path class="fill-white" d="M37.5,30.5H10.9v-6.6h34.3c-0.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7,0-9,2.1-9,6.7v4.9c0,4,3.4,6.3,8.4,6.3h26.9v7H1.5

@@ -33,11 +33,11 @@ const App = () => {
       {/* Top horizontal glow effect */}
       <div
         className="absolute top-[3%] left-0 right-0 h-10 md:h-14
-        shadow-[0_0_15px_15px_rgba(255,255,255,0.7)] -z-10"
+        shadow-[0_0_10px_5px_rgba(255,255,255,0.7)] -z-10"
       ></div>
       <div
         className="absolute top-[100%] left-0 right-0 h-10 md:h-14
-        shadow-[0_0_15px_15px_rgba(255,255,255,0.7)] -z-10"
+        shadow-[0_0_10px_5px_rgba(255,255,255,0.7)] -z-10"
       ></div>
       
       {/* Content container */}
