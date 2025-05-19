@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex justify-between items-center md:p-6 p-5 md:pt-7 select-none">
+    <header className="flex justify-between items-center md:p-7 p-5 pt-6 select-none">
       <div
         className="absolute top-[3%] left-0 right-0 h-10 md:h-14
         shadow-[0_0_20px_10px_rgba(255,255,255,0.7)] -z-10"
@@ -70,7 +70,7 @@ const Header = () => {
         </g>
       </svg>
 
-      <nav className="hidden md:flex items-center justify-center gap-12 px-5">
+      <nav className="hidden xl:flex items-center justify-center gap-12 px-5">
         {["FALCON 9", "FALCON HEAVY", "DRAGON", "STARSHIP", "HUMAN SPACEFLIGHT"].map(t => (
           <a key={t} href="#" className="text-xl tracking-wider relative after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">
             {t}
@@ -78,13 +78,13 @@ const Header = () => {
         ))}
       </nav>
 
-      <button onClick={() => toggleAuthPopup(false)} className="hidden md:block bg-[#b7b7b7] text-black py-2 px-5 rounded-full font-medium transition hover:bg-white z-50 cursor-pointer">
+      <button onClick={() => toggleAuthPopup(false)} className="hidden xl:block bg-[#b7b7b7] text-black py-2 px-5 rounded-full font-medium transition hover:bg-white z-50 cursor-pointer">
         SIGN IN
       </button>
 
-      <button onClick={toggleMobileMenu} className="md:hidden text-3xl p-2 z-50"><IoIosMenu /></button>
+      <button onClick={toggleMobileMenu} className="xl:hidden text-3xl p-2 z-50"><IoIosMenu /></button>
 
-      <div className={`fixed top-16 bottom-0 left-0 right-0 bg-transparent backdrop-blur-sm h-screen z-30 md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
+      <div className={`fixed top-16 bottom-0 left-0 right-0 bg-transparent backdrop-blur-sm h-screen z-30 xl:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
       >
         <nav className="flex flex-col justify-center gap-10 items-center p-10">
           {/* mobile auth buttons */}
