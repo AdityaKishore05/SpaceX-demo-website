@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react';
 import Header from "./Components/Header";
 import Hero from "./Components/Hero";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const App = () => {
+  useEffect(() => { })
+    // Initialize AOS
+    AOS.init({
+      once: false,
+      offset: 100, // trigger animation 100px before element comes into view
+      disable: false
+    });
   useEffect(() => {
     
     // Disable scrolling on the entire document

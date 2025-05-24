@@ -23,7 +23,10 @@ const Hero = () => {
       {/* Main container */}
       <div className="container mx-auto px-5 flex flex-col lg:flex-row items-center justify-between md:py-20">
         {/* Text Content */}
-        <div 
+        <div data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine"
+                data-aos-duration= "1000"
           className="z-10 w-full lg:w-1/2 pt-10 lg:pt-0">
           <div className="flex flex-col items-center lg:items-start max-w-md mx-auto lg:mx-0">
             {/* Badge */}
@@ -70,8 +73,13 @@ const Hero = () => {
           {/* Spline 3D object */}
           {windowWidth > 768 && (
             <div>
-              <Spline 
-                className="w-full h-full ml-30" 
+              <Spline
+                data-aos="fade-zoom-in"
+                data-aos-easing="ease-in-back"
+                data-aos-delay="300"
+                data-aos-offset="0"
+                data-aos-duration= "1000"
+                className="w-full h-full ml-30"
                 scene="https://prod.spline.design/jeVzQSaHENWb6HmG/scene.splinecode"
               />
             </div>
