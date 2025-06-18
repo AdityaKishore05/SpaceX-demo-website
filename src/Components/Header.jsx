@@ -73,7 +73,7 @@ const Header = () => {
       <nav data-aos="zoom-out"os-easing="linear"
      data-aos-duration="1500" className="hidden xl:flex items-center justify-center gap-12 px-5">
         {["FALCON 9", "FALCON HEAVY", "DRAGON", "STARSHIP", "HUMAN SPACEFLIGHT"].map(t => (
-          <a key={t} href="#" className="text-xl tracking-wider relative after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">
+          <a key={t} href="#" className="text-lg tracking-wider relative after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:duration-300">
             {t}
           </a>
         ))}
